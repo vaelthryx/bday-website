@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Universe ✦</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background"></div>
+    <div class="background-overlay"></div>
+
+    <div class="stars stars-one"></div>
+    <div class="stars stars-two"></div>
+
+    <div id="particles"></div>
+
+    <div class="ambient-glow glow-one"></div>
+    <div class="ambient-glow glow-two"></div>
+    <div class="ambient-glow glow-three"></div>
+
+
+    <!-- MOON -->
+    <div class="moon-container">
+
+        <div class="moon-aura"></div>
+
+        <img
+            src="moon.png"
+            class="moon"
+            alt="Moon"
+        >
+
+    </div>
+
+    <div class="shooting-star"></div>
+
+
+    <!-- =====================================================
+         SCENE 1
+    ====================================================== -->
+
+    <section class="scene scene-intro active" id="scene1">
+
+        <div class="scene-content">
+
+            <div class="eyebrow">
+                somewhere beneath the stars
+            </div>
+
+            <h1>
+                A little<br>
+                <span>universe.</span>
+            </h1>
+
+            <p class="intro-description">
+                Tonight isn't just another night.
+                There's a tiny story waiting for you.
+            </p>
+
+            <button class="primary-button" id="beginButton">
+                Begin the story
+                <b>→</b>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCENE 2
+    ====================================================== -->
+
+    <section class="scene scene-journey" id="scene2">
+
+        <div class="scene-content">
+
+            <div class="eyebrow">
+                chapter one
+            </div>
+
+            <h2>
+                Some nights<br>
+                <span>feel different.</span>
+            </h2>
+
+            <p>
+                Maybe it's the stars.
+                Maybe it's the moon.
+                Or maybe some nights are simply
+                meant to remind us of someone special.
+            </p>
+
+            <button class="primary-button" id="journeyButton">
+                Keep going
+                <b>→</b>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCENE 3
+         MAGIC STAR
+    ====================================================== -->
+
+    <section class="scene scene-star" id="scene3">
+
+        <div class="scene-content">
+
+            <div class="eyebrow">
+                chapter two
+            </div>
+
+            <h2>
+                There's a little<br>
+                <span>light.</span>
+            </h2>
+
+            <p>
+                Maybe it has been waiting for you.
+                Touch it and see where it takes you.
+            </p>
+
+            <div class="magic-star" id="magicStar">
+                ✦
+            </div>
+
+            <div class="star-hint">
+                touch the light
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCENE 4
+         GIFT
+    ====================================================== -->
+
+  <!-- =====================================================
+     SCENE 4 — LITTLE GIFT
+===================================================== -->
+
+<section class="scene scene-gift" id="scene4">
+
+    <div class="scene-content">
+
+        <div class="eyebrow">
+            chapter three
+        </div>
+
+        <h2>
+            A little<br>
+            <span>something.</span>
+        </h2>
+
+        <p class="gift-description">
+            I left one little surprise beneath the stars.
+        </p>
+
+
+        <!-- CSS GIFT -->
+
+        <div class="little-gift" id="littleGift">
+
+            <!-- Glow -->
+
+            <div class="gift-halo"></div>
+
+
+            <!-- Floating sparkles -->
+
+            <span class="gift-sparkle gs1">✦</span>
+            <span class="gift-sparkle gs2">✧</span>
+            <span class="gift-sparkle gs3">✦</span>
+            <span class="gift-sparkle gs4">·</span>
+
+
+            <!-- Gift -->
+
+            <div class="gift">
+
+                <!-- Lid -->
+
+                <div class="gift-lid">
+
+                    <div class="gift-lid-ribbon"></div>
+
+                </div>
+
+
+                <!-- Box -->
+
+                <div class="gift-box">
+
+                    <div class="gift-ribbon"></div>
+
+                </div>
+
+
+                <!-- Light -->
+
+                <div class="gift-light">
+                    ✦
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="gift-tap">
+            tap the little gift
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- =====================================================
+         SCENE 5
+         ENVELOPE
+    ====================================================== -->
+
+    <section class="scene scene-letter-intro" id="scene5">
+
+        <div class="scene-content">
+
+            <div class="cinematic-label">
+                a little something
+            </div>
+
+
+            <div
+                class="luxury-envelope"
+                id="luxuryEnvelope"
+            >
+
+                <div class="envelope-glow"></div>
+
+                <div class="envelope-body">
+
+                    <div class="envelope-inner"></div>
+
+                    <div class="envelope-flap"></div>
+
+                    <div class="envelope-front">
+
+                        <div class="envelope-line"></div>
+
+                        <div class="envelope-monogram">
+                            ♡
+                        </div>
+
+                    </div>
+
+                    <div class="wax-seal">
+                        ✦
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2 class="letter-intro-title">
+                Something<br>
+                <span>for you.</span>
+            </h2>
+
+            <p class="letter-intro-text">
+                Some words are better written
+                than spoken.
+            </p>
+
+            <button
+                class="primary-button"
+                id="letterButton"
+            >
+                Open the letter
+                <b>→</b>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCENE 6
+         LETTER
+    ====================================================== -->
+
+    <section class="scene scene-letter" id="scene6">
+
+        <div class="letter-wrapper">
+
+            <div class="letter-paper">
+
+                <div class="paper-border"></div>
+
+                <div class="paper-corner top-left">
+                    ❧
+                </div>
+
+                <div class="paper-corner top-right">
+                    ❧
+                </div>
+
+                <div class="paper-corner bottom-left">
+                    ❧
+                </div>
+
+                <div class="paper-corner bottom-right">
+                    ❧
+                </div>
+
+
+                <div class="letter-header">
+
+                    <span>
+                        A little note
+                    </span>
+
+                    <div class="tiny-star">
+                        ✦
+                    </div>
+
+                </div>
+
+
+                <div class="letter-date">
+                    written especially for you
+                </div>
+
+
+                <div class="letter-content">
+
+                    <p class="handwritten">
+                        Hey birthday girl,
+                    </p>
+
+                    <p>
+                        There are some people who make
+                        ordinary days feel a little more
+                        special simply by being there.
+                    </p>
+
+                    <p>
+                        And today felt like the perfect
+                        excuse to remind you just how
+                        wonderful you are.
+                    </p>
+
+                    <p>
+                        I hope this new chapter brings
+                        you countless reasons to smile,
+                        beautiful memories you never
+                        want to forget, and moments that
+                        make you stop and think,
+                        <em>
+                            "I'm really happy I got to
+                            experience this."
+                        </em>
+                    </p>
+
+                    <p>
+                        May you always have the courage
+                        to chase the things that make
+                        your heart happy.
+                    </p>
+
+                    <p>
+                        And when life gets a little
+                        complicated, I hope you remember
+                        that there are still beautiful
+                        things waiting for you beyond
+                        the horizon.
+                    </p>
+
+                    <p>
+                        So here's to another year of
+                        adventures, laughter, unexpected
+                        memories and dreams slowly
+                        becoming real.
+                    </p>
+
+
+                    <div class="letter-closing">
+
+                        <span class="handwritten">
+                            Happy Birthday ♡
+                        </span>
+
+                        <small>
+                            may your story keep getting
+                            more beautiful
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="letter-signature">
+
+                    <span class="signature">
+                        With lots of wishes,
+                    </span>
+
+                    <div class="signature-line">
+                        ✦
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-button letter-continue"
+                    id="finalButton"
+                >
+                    Turn the page
+                    <b>→</b>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCENE 7
+         FINAL
+    ====================================================== -->
+
+    <section class="scene scene-final" id="scene7">
+
+        <div class="final-content">
+
+            <div class="final-stars">
+                ✦　✧　✦
+            </div>
+
+            <div class="eyebrow">
+                the beginning of another chapter
+            </div>
+
+            <h1>
+                Happy<br>
+                <span>Birthday.</span>
+            </h1>
+
+            <div class="final-divider"></div>
+
+            <p class="final-message">
+                May your next chapter be even more
+                beautiful than the last.
+            </p>
+
+            <div class="final-small">
+                ✦ made of memories, dreams & little moments ✦
+            </div>
+
+            <button
+                class="restart-button"
+                id="restartButton"
+            >
+                ↻ experience it again
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FIREWORKS -->
+
+    <canvas id="fireworks"></canvas>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
