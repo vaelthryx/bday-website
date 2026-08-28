@@ -9,6 +9,7 @@
 ========================================================= */
 
 const scenes = [
+
     document.getElementById("scene1"),
     document.getElementById("scene2"),
     document.getElementById("scene3"),
@@ -16,477 +17,84 @@ const scenes = [
     document.getElementById("scene5"),
     document.getElementById("scene6"),
     document.getElementById("scene7")
+
 ];
 
+
 let currentScene = 0;
+
 let changingScene = false;
 
 
+
 /* =========================================================
-   CHANGE SCENE
+   SCENE TRANSITION
 ========================================================= */
 
 function goToScene(index) {
 
-    if (index < 0 || index >= scenes.length) {
+    if (
+        index < 0 ||
+        index >= scenes.length
+    ) {
         return;
     }
 
-    if (index === currentScene) {
+
+    if (
+        index === currentScene ||
+        changingScene
+    ) {
         return;
     }
 
-    if (changingScene) {
-        return;
-    }
 
     changingScene = true;
 
 
-    /* Fade current scene */
+    if (scenes[currentScene]) {
 
-    scenes[currentScene].classList.remove("active");
+        scenes[currentScene]
+            .classList
+            .remove("active");
+
+    }
 
 
     setTimeout(() => {
 
         currentScene = index;
 
-        scenes[currentScene].classList.add("active");
 
-        changingScene = false;
-
-    }, 250);
-}
-
-
-/* =========================================================
-   SCENE 1 → SCENE 2
-========================================================= */
-
-const beginButton =
-    document.getElementById("beginButton");
-
-if (beginButton) {
-
-    beginButton.addEventListener("click", () => {
-
-        createParticleBurst(
-            window.innerWidth / 2,
-            window.innerHeight / 2,
-            35
-        );
-
-        goToScene(1);
-
-    });
-
-}
-
-
-/* =========================================================
-   SCENE 2 → SCENE 3
-========================================================= */
-
-const journeyButton =
-    document.getElementById("journeyButton");
-
-if (journeyButton) {
-
-    journeyButton.addEventListener("click", () => {
-
-        createParticleBurst(
-            window.innerWidth / 2,
-            window.innerHeight / 2,
-            35
-        );
-
-        goToScene(2);
-
-    });
-
-}
-
-
-/* =========================================================
-   ✦ MAGIC STAR
-========================================================= */
-
-const magicStar =
-    document.getElementById("magicStar");
-
-
-if (magicStar) {
-
-    magicStar.addEventListener("click", () => {
-
-        if (magicStar.classList.contains("used")) {
-            return;
-        }
-
-        magicStar.classList.add("used");
-
-
-        /* Get star position */
-
-        const rect =
-            magicStar.getBoundingClientRect();
-
-        const x =
-            rect.left + rect.width / 2;
-
-        const y =
-            rect.top + rect.height / 2;
-
-
-        /* Magical particle explosion */
-
-        createParticleBurst(
-            x,
-            y,
-            90
-        );
-
-
-        /* Star grows */
-
-        magicStar.style.transform =
-            "scale(1.8) rotate(180deg)";
-
-        magicStar.style.textShadow = `
-            0 0 15px white,
-            0 0 35px white,
-            0 0 70px #c9b7ff,
-            0 0 120px #9d82ff
-        `;
-
-
-        /* Fade star */
-
-        setTimeout(() => {
-
-            magicStar.style.transform =
-                "scale(0) rotate(360deg)";
-
-            magicStar.style.opacity =
-                "0";
-
-        }, 500);
-
-
-        /* Continue */
-
-        setTimeout(() => {
-
-            goToScene(3);
-
-        }, 1000);
-
-    });
-
-}
-
-
-/* =========================================================
-   🎁 LITTLE GIFT
-========================================================= */
-
-const littleGift =
-    document.getElementById("littleGift");
-
-let giftOpened = false;
-
-
-if (littleGift) {
-
-    littleGift.addEventListener("click", () => {
-
-        if (giftOpened) {
-            return;
-        }
-
-        giftOpened = true;
-
-
-        /* ---------------------------------------------
-           Open gift
-        --------------------------------------------- */
-
-        littleGift.classList.add(
-            "opening"
-        );
-
-
-        /* ---------------------------------------------
-           First magical burst
-        --------------------------------------------- */
-
-        setTimeout(() => {
-
-            createParticleBurst(
-
-                window.innerWidth / 2,
-
-                window.innerHeight / 2,
-
-                100
-
-            );
-
-        }, 200);
-
-
-        /* ---------------------------------------------
-           Second burst from the gift
-        --------------------------------------------- */
-
-        setTimeout(() => {
-
-            createParticleBurst(
-
-                window.innerWidth / 2,
-
-                window.innerHeight / 2 - 45,
-
-                60
-
-            );
-
-        }, 450);
-
-
-        /* ---------------------------------------------
-           Third tiny sparkle burst
-        --------------------------------------------- */
-
-        setTimeout(() => {
-
-            createParticleBurst(
-
-                window.innerWidth / 2,
-
-                window.innerHeight / 2 - 80,
-
-                25
-
-            );
-
-        }, 700);
-
-
-        /* ---------------------------------------------
-           Move to envelope
-        --------------------------------------------- */
-
-        setTimeout(() => {
-
-            goToScene(4);
-
-        }, 1450);
-
-    });
-
-}
-
-
-/* =========================================================
-   💌 ENVELOPE
-========================================================= */
-
-const letterButton =
-    document.getElementById("letterButton");
-
-const envelope =
-    document.getElementById("luxuryEnvelope");
-
-
-if (letterButton && envelope) {
-
-    letterButton.addEventListener("click", () => {
-
-        /* Envelope animation */
-
-        envelope.classList.add(
-            "opening"
-        );
-
-
-        /* Magical particles */
-
-        createParticleBurst(
-
-            window.innerWidth / 2,
-
-            window.innerHeight / 2,
-
-            55
-
-        );
-
-
-        /* Open letter */
-
-        setTimeout(() => {
-
-            goToScene(5);
-
-        }, 1100);
-
-    });
-
-}
-
-
-/* =========================================================
-   💌 LETTER → FINAL
-========================================================= */
-
-const finalButton =
-    document.getElementById("finalButton");
-
-
-if (finalButton) {
-
-    finalButton.addEventListener("click", () => {
-
-        goToScene(6);
-
-
-        /* Start fireworks */
-
-        setTimeout(() => {
-
-            launchFireworks();
-
-        }, 700);
-
-
-        /* Celebration particles */
-
-        setTimeout(() => {
-
-            createParticleBurst(
-
-                window.innerWidth / 2,
-
-                window.innerHeight / 2,
-
-                120
-
-            );
-
-        }, 1000);
-
-    });
-
-}
-
-
-/* =========================================================
-   🔄 RESTART
-========================================================= */
-
-const restartButton =
-    document.getElementById("restartButton");
-
-
-if (restartButton) {
-
-    restartButton.addEventListener(
-        "click",
-        () => {
-
-            /* -----------------------------------------
-               Reset scene
-            ----------------------------------------- */
+        if (scenes[currentScene]) {
 
             scenes[currentScene]
                 .classList
-                .remove("active");
-
-            currentScene = 0;
-
-            scenes[0]
-                .classList
                 .add("active");
 
-
-            /* -----------------------------------------
-               Reset gift
-            ----------------------------------------- */
-
-            if (littleGift) {
-
-                littleGift.classList.remove(
-                    "opening"
-                );
-
-                giftOpened = false;
-
-            }
-
-
-            /* -----------------------------------------
-               Reset magic star
-            ----------------------------------------- */
-
-            if (magicStar) {
-
-                magicStar.classList.remove(
-                    "used"
-                );
-
-                magicStar.style.transform =
-                    "";
-
-                magicStar.style.opacity =
-                    "";
-
-                magicStar.style.textShadow =
-                    "";
-
-            }
-
-
-            /* -----------------------------------------
-               Reset envelope
-            ----------------------------------------- */
-
-            if (envelope) {
-
-                envelope.classList.remove(
-                    "opening"
-                );
-
-            }
-
-
-            /* -----------------------------------------
-               Clear fireworks
-            ----------------------------------------- */
-
-            fireworks.length = 0;
-
-            ctx.clearRect(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-
         }
-    );
+
+
+        changingScene = false;
+
+    }, 350);
 
 }
 
 
+
 /* =========================================================
-   ✨ BACKGROUND PARTICLES
+   PARTICLE SYSTEM
 ========================================================= */
 
 const particleContainer =
     document.getElementById("particles");
 
+
+
+/* =========================================================
+   BACKGROUND PARTICLES
+========================================================= */
 
 function createBackgroundParticles() {
 
@@ -495,7 +103,10 @@ function createBackgroundParticles() {
     }
 
 
-    const amount = 55;
+    const amount =
+        window.innerWidth < 600
+            ? 38
+            : 65;
 
 
     for (
@@ -512,29 +123,26 @@ function createBackgroundParticles() {
             "particle";
 
 
-        /* Random position */
-
         particle.style.left =
             Math.random() * 100 + "%";
+
 
         particle.style.top =
             Math.random() * 100 + "%";
 
 
-        /* Random size */
-
         const size =
             1 +
             Math.random() * 3;
 
+
         particle.style.width =
             size + "px";
+
 
         particle.style.height =
             size + "px";
 
-
-        /* Random animation */
 
         particle.style.setProperty(
             "--duration",
@@ -569,15 +177,40 @@ function createBackgroundParticles() {
 createBackgroundParticles();
 
 
+
 /* =========================================================
-   ✨ PARTICLE BURST
+   ✨ CINEMATIC PARTICLE BURST
 ========================================================= */
 
 function createParticleBurst(
     x,
     y,
-    amount = 50
+    amount = 50,
+    options = {}
 ) {
+
+    const colors = options.colors || [
+
+        "#ffffff",
+        "#fff2c7",
+        "#eadcff",
+        "#d9c9ff",
+        "#ffe3a7"
+
+    ];
+
+
+    const spread =
+        options.spread || 220;
+
+
+    const durationMin =
+        options.durationMin || 700;
+
+
+    const durationMax =
+        options.durationMax || 1500;
+
 
     for (
         let i = 0;
@@ -589,27 +222,35 @@ function createParticleBurst(
             document.createElement("div");
 
 
-        /* Position */
+        const color =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
 
-        particle.style.position =
-            "fixed";
-
-        particle.style.left =
-            x + "px";
-
-        particle.style.top =
-            y + "px";
-
-
-        /* Size */
 
         const size =
             2 +
             Math.random() * 4;
 
 
+        particle.style.position =
+            "fixed";
+
+
+        particle.style.left =
+            x + "px";
+
+
+        particle.style.top =
+            y + "px";
+
+
         particle.style.width =
             size + "px";
+
 
         particle.style.height =
             size + "px";
@@ -619,30 +260,33 @@ function createParticleBurst(
             "50%";
 
 
-        /* Appearance */
-
         particle.style.background =
-            "white";
+            color;
+
 
         particle.style.boxShadow = `
-            0 0 8px white,
-            0 0 20px rgba(210,190,255,.9)
+
+            0 0 8px ${color},
+
+            0 0 18px ${color},
+
+            0 0 35px rgba(210,190,255,.7)
+
         `;
 
 
         particle.style.pointerEvents =
             "none";
 
+
         particle.style.zIndex =
-            "999";
+            "9999";
 
 
         document.body.appendChild(
             particle
         );
 
-
-        /* Direction */
 
         const angle =
             Math.random() *
@@ -651,9 +295,9 @@ function createParticleBurst(
 
 
         const distance =
-            50 +
+            45 +
             Math.random() *
-            210;
+            spread;
 
 
         const dx =
@@ -666,19 +310,19 @@ function createParticleBurst(
             distance;
 
 
-        /* Animation */
-
         const animation =
             particle.animate(
 
                 [
 
                     {
+
                         transform:
                             "translate(-50%, -50%) scale(1)",
 
                         opacity:
                             1
+
                     },
 
                     {
@@ -702,11 +346,18 @@ function createParticleBurst(
                 {
 
                     duration:
-                        700 +
-                        Math.random() * 800,
+                        durationMin +
+                        Math.random() *
+                        (
+                            durationMax -
+                            durationMin
+                        ),
 
                     easing:
-                        "cubic-bezier(.15,.75,.25,1)"
+                        "cubic-bezier(.15,.75,.25,1)",
+
+                    fill:
+                        "forwards"
 
                 }
 
@@ -724,6 +375,753 @@ function createParticleBurst(
 }
 
 
+
+/* =========================================================
+   GET CENTER OF ELEMENT
+========================================================= */
+
+function getElementCenter(element) {
+
+    if (!element) {
+
+        return {
+
+            x:
+                window.innerWidth / 2,
+
+            y:
+                window.innerHeight / 2
+
+        };
+
+    }
+
+
+    const rect =
+        element.getBoundingClientRect();
+
+
+    return {
+
+        x:
+            rect.left +
+            rect.width / 2,
+
+        y:
+            rect.top +
+            rect.height / 2
+
+    };
+
+}
+
+
+
+/* =========================================================
+   SCENE 1 → 2
+========================================================= */
+
+const beginButton =
+    document.getElementById("beginButton");
+
+
+if (beginButton) {
+
+    beginButton.addEventListener(
+        "click",
+        () => {
+
+            createParticleBurst(
+
+                window.innerWidth / 2,
+
+                window.innerHeight / 2,
+
+                35
+
+            );
+
+
+            goToScene(1);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   SCENE 2 → 3
+========================================================= */
+
+const journeyButton =
+    document.getElementById("journeyButton");
+
+
+if (journeyButton) {
+
+    journeyButton.addEventListener(
+        "click",
+        () => {
+
+            createParticleBurst(
+
+                window.innerWidth / 2,
+
+                window.innerHeight / 2,
+
+                35
+
+            );
+
+
+            goToScene(2);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   ✦ MAGIC STAR
+========================================================= */
+
+const magicStar =
+    document.getElementById("magicStar");
+
+
+let starUsed = false;
+
+
+function activateMagicStar() {
+
+    if (
+        !magicStar ||
+        starUsed
+    ) {
+        return;
+    }
+
+
+    starUsed = true;
+
+
+    const position =
+        getElementCenter(
+            magicStar
+        );
+
+
+    createParticleBurst(
+
+        position.x,
+
+        position.y,
+
+        90,
+
+        {
+
+            spread:
+                240,
+
+            durationMin:
+                700,
+
+            durationMax:
+                1400
+
+        }
+
+    );
+
+
+    magicStar.classList.add(
+        "used"
+    );
+
+
+    magicStar.style.transform =
+        "scale(1.8) rotate(180deg)";
+
+
+    magicStar.style.textShadow = `
+
+        0 0 15px white,
+
+        0 0 35px white,
+
+        0 0 70px #c9b7ff,
+
+        0 0 120px #9d82ff
+
+    `;
+
+
+    setTimeout(() => {
+
+        magicStar.style.transform =
+            "scale(0) rotate(360deg)";
+
+        magicStar.style.opacity =
+            "0";
+
+    }, 500);
+
+
+    setTimeout(() => {
+
+        goToScene(3);
+
+    }, 1000);
+
+}
+
+
+if (magicStar) {
+
+    magicStar.addEventListener(
+        "click",
+        activateMagicStar
+    );
+
+
+    magicStar.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                activateMagicStar();
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   🎁 LITTLE GIFT
+========================================================= */
+
+const littleGift =
+    document.getElementById("littleGift");
+
+
+let giftOpened = false;
+
+
+
+/* ---------------------------------------------------------
+   GIFT PARTICLE EXPLOSION
+--------------------------------------------------------- */
+
+function giftBurst(
+    amount,
+    spread
+) {
+
+    if (!littleGift) {
+        return;
+    }
+
+
+    const position =
+        getElementCenter(
+            littleGift
+        );
+
+
+    createParticleBurst(
+
+        position.x,
+
+        position.y,
+
+        amount,
+
+        {
+
+            spread:
+                spread,
+
+            colors: [
+
+                "#ffffff",
+                "#fff3c4",
+                "#eadcff",
+                "#d7c5ff",
+                "#ffe1a3"
+
+            ],
+
+            durationMin:
+                650,
+
+            durationMax:
+                1450
+
+        }
+
+    );
+
+}
+
+
+
+/* ---------------------------------------------------------
+   OPEN GIFT
+--------------------------------------------------------- */
+
+function openLittleGift() {
+
+    if (
+        !littleGift ||
+        giftOpened
+    ) {
+        return;
+    }
+
+
+    giftOpened = true;
+
+
+    littleGift.setAttribute(
+        "aria-disabled",
+        "true"
+    );
+
+
+    littleGift.classList.add(
+        "opening"
+    );
+
+
+    /* -----------------------------------------
+       FIRST BURST
+    ----------------------------------------- */
+
+    setTimeout(() => {
+
+        giftBurst(
+            120,
+            210
+        );
+
+    }, 170);
+
+
+
+    /* -----------------------------------------
+       SECOND BURST
+    ----------------------------------------- */
+
+    setTimeout(() => {
+
+        giftBurst(
+            85,
+            180
+        );
+
+    }, 390);
+
+
+
+    /* -----------------------------------------
+       THIRD — VERTICAL MAGIC
+    ----------------------------------------- */
+
+    setTimeout(() => {
+
+        if (!littleGift) {
+            return;
+        }
+
+
+        const position =
+            getElementCenter(
+                littleGift
+            );
+
+
+        createParticleBurst(
+
+            position.x,
+
+            position.y - 55,
+
+            55,
+
+            {
+
+                spread:
+                    145,
+
+                colors: [
+
+                    "#ffffff",
+                    "#fff5d0",
+                    "#dfc8ff"
+
+                ],
+
+                durationMin:
+                    800,
+
+                durationMax:
+                    1600
+
+            }
+
+        );
+
+    }, 610);
+
+
+
+    /* -----------------------------------------
+       FINAL FLASH
+    ----------------------------------------- */
+
+    setTimeout(() => {
+
+        giftBurst(
+            35,
+            120
+        );
+
+    }, 820);
+
+
+
+    /* -----------------------------------------
+       GO TO ENVELOPE
+    ----------------------------------------- */
+
+    setTimeout(() => {
+
+        goToScene(4);
+
+    }, 1550);
+
+}
+
+
+
+/* ---------------------------------------------------------
+   MOUSE + TOUCH
+--------------------------------------------------------- */
+
+if (littleGift) {
+
+    littleGift.addEventListener(
+        "click",
+        openLittleGift
+    );
+
+
+    /* -----------------------------------------
+       ENTER / SPACE
+    ----------------------------------------- */
+
+    littleGift.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                openLittleGift();
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   💌 ENVELOPE
+========================================================= */
+
+const letterButton =
+    document.getElementById("letterButton");
+
+
+const envelope =
+    document.getElementById("luxuryEnvelope");
+
+
+let envelopeOpened = false;
+
+
+function openEnvelope() {
+
+    if (
+        !envelope ||
+        envelopeOpened
+    ) {
+        return;
+    }
+
+
+    envelopeOpened = true;
+
+
+    envelope.classList.add(
+        "opening"
+    );
+
+
+    const position =
+        getElementCenter(
+            envelope
+        );
+
+
+    createParticleBurst(
+
+        position.x,
+
+        position.y,
+
+        60,
+
+        {
+
+            spread:
+                190
+
+        }
+
+    );
+
+
+    setTimeout(() => {
+
+        goToScene(5);
+
+    }, 1100);
+
+}
+
+
+if (
+    letterButton &&
+    envelope
+) {
+
+    letterButton.addEventListener(
+        "click",
+        openEnvelope
+    );
+
+}
+
+
+
+/* =========================================================
+   💌 LETTER → FINAL
+========================================================= */
+
+const finalButton =
+    document.getElementById("finalButton");
+
+
+if (finalButton) {
+
+    finalButton.addEventListener(
+        "click",
+        () => {
+
+            goToScene(6);
+
+
+            setTimeout(() => {
+
+                launchFireworks();
+
+            }, 700);
+
+
+            setTimeout(() => {
+
+                createParticleBurst(
+
+                    window.innerWidth / 2,
+
+                    window.innerHeight / 2,
+
+                    120,
+
+                    {
+
+                        spread:
+                            320
+
+                    }
+
+                );
+
+            }, 1000);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   🔄 RESTART
+========================================================= */
+
+const restartButton =
+    document.getElementById("restartButton");
+
+
+if (restartButton) {
+
+    restartButton.addEventListener(
+        "click",
+        () => {
+
+
+            /* Scene */
+
+            if (scenes[currentScene]) {
+
+                scenes[currentScene]
+                    .classList
+                    .remove("active");
+
+            }
+
+
+            currentScene = 0;
+
+
+            if (scenes[0]) {
+
+                scenes[0]
+                    .classList
+                    .add("active");
+
+            }
+
+
+            changingScene = false;
+
+
+
+            /* Gift */
+
+            if (littleGift) {
+
+                littleGift.classList.remove(
+                    "opening"
+                );
+
+
+                littleGift.removeAttribute(
+                    "aria-disabled"
+                );
+
+            }
+
+
+            giftOpened = false;
+
+
+
+            /* Star */
+
+            if (magicStar) {
+
+                magicStar.classList.remove(
+                    "used"
+                );
+
+
+                magicStar.style.transform =
+                    "";
+
+                magicStar.style.opacity =
+                    "";
+
+                magicStar.style.textShadow =
+                    "";
+
+            }
+
+
+            starUsed = false;
+
+
+
+            /* Envelope */
+
+            if (envelope) {
+
+                envelope.classList.remove(
+                    "opening"
+                );
+
+            }
+
+
+            envelopeOpened = false;
+
+
+
+            /* Fireworks */
+
+            fireworks.length = 0;
+
+
+            if (
+                ctx &&
+                canvas
+            ) {
+
+                ctx.clearRect(
+
+                    0,
+
+                    0,
+
+                    canvas.width,
+
+                    canvas.height
+
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
 /* =========================================================
    🎆 FIREWORK CANVAS
 ========================================================= */
@@ -731,10 +1129,12 @@ function createParticleBurst(
 const canvas =
     document.getElementById("fireworks");
 
+
 const ctx =
     canvas
         ? canvas.getContext("2d")
         : null;
+
 
 
 function resizeCanvas() {
@@ -743,11 +1143,44 @@ function resizeCanvas() {
         return;
     }
 
+
+    const ratio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+
     canvas.width =
-        window.innerWidth;
+        window.innerWidth *
+        ratio;
+
 
     canvas.height =
-        window.innerHeight;
+        window.innerHeight *
+        ratio;
+
+
+    canvas.style.width =
+        window.innerWidth + "px";
+
+
+    canvas.style.height =
+        window.innerHeight + "px";
+
+
+    if (ctx) {
+
+        ctx.setTransform(
+            ratio,
+            0,
+            0,
+            ratio,
+            0,
+            0
+        );
+
+    }
 
 }
 
@@ -761,11 +1194,13 @@ window.addEventListener(
 );
 
 
+
 /* =========================================================
    FIREWORK DATA
 ========================================================= */
 
 let fireworks = [];
+
 
 
 /* =========================================================
@@ -785,7 +1220,10 @@ function createFirework(
     const particles = [];
 
 
-    const particleCount = 65;
+    const particleCount =
+        window.innerWidth < 600
+            ? 45
+            : 65;
 
 
     for (
@@ -802,15 +1240,16 @@ function createFirework(
 
         const speed =
             1.5 +
-            Math.random() *
-            5;
+            Math.random() * 5;
 
 
         particles.push({
 
-            x: x,
+            x:
+                x,
 
-            y: y,
+            y:
+                y,
 
             vx:
                 Math.cos(angle) *
@@ -822,13 +1261,11 @@ function createFirework(
 
             life:
                 60 +
-                Math.random() *
-                45,
+                Math.random() * 45,
 
             size:
                 1 +
-                Math.random() *
-                2
+                Math.random() * 2
 
         });
 
@@ -842,22 +1279,31 @@ function createFirework(
 }
 
 
+
 /* =========================================================
    FIREWORK ANIMATION
 ========================================================= */
 
 function animateFireworks() {
 
-    if (!ctx || !canvas) {
+    if (
+        !ctx ||
+        !canvas
+    ) {
         return;
     }
 
 
     ctx.clearRect(
+
         0,
+
         0,
-        canvas.width,
-        canvas.height
+
+        window.innerWidth,
+
+        window.innerHeight
+
     );
 
 
@@ -875,31 +1321,31 @@ function animateFireworks() {
                 ) => {
 
 
-                    /* Movement */
-
                     particle.x +=
                         particle.vx;
+
 
                     particle.y +=
                         particle.vy;
 
 
-                    /* Gravity */
-
                     particle.vy +=
-                        0.035;
+                        .035;
 
-
-                    /* Air resistance */
 
                     particle.vx *=
-                        0.99;
+                        .99;
 
 
                     particle.life--;
 
 
-                    /* Draw */
+                    const opacity =
+                        Math.max(
+                            0,
+                            particle.life / 105
+                        );
+
 
                     ctx.beginPath();
 
@@ -919,13 +1365,6 @@ function animateFireworks() {
                     );
 
 
-                    const opacity =
-                        Math.max(
-                            0,
-                            particle.life / 105
-                        );
-
-
                     ctx.fillStyle =
                         `rgba(
                             255,
@@ -938,14 +1377,13 @@ function animateFireworks() {
                     ctx.shadowBlur =
                         12;
 
+
                     ctx.shadowColor =
                         "white";
 
 
                     ctx.fill();
 
-
-                    /* Remove dead particle */
 
                     if (
                         particle.life <= 0
@@ -961,8 +1399,6 @@ function animateFireworks() {
                 }
             );
 
-
-            /* Remove empty firework */
 
             if (
                 firework.length === 0
@@ -989,6 +1425,7 @@ function animateFireworks() {
 animateFireworks();
 
 
+
 /* =========================================================
    🎆 FIREWORK SHOW
 ========================================================= */
@@ -1000,7 +1437,10 @@ function launchFireworks() {
     }
 
 
-    const numberOfFireworks = 10;
+    const numberOfFireworks =
+        window.innerWidth < 600
+            ? 7
+            : 10;
 
 
     for (
@@ -1012,18 +1452,27 @@ function launchFireworks() {
         setTimeout(
             () => {
 
+                const horizontalPadding =
+                    window.innerWidth < 600
+                        ? 40
+                        : 80;
+
+
                 createFirework(
 
-                    80 +
+                    horizontalPadding +
                     Math.random() *
                     (
-                        window.innerWidth - 160
+                        window.innerWidth -
+                        horizontalPadding * 2
                     ),
 
-                    80 +
+
+                    70 +
                     Math.random() *
                     (
-                        window.innerHeight * .55
+                        window.innerHeight *
+                        .55
                     )
 
                 );
@@ -1039,8 +1488,9 @@ function launchFireworks() {
 }
 
 
+
 /* =========================================================
-   ✦ FINAL SCENE AMBIENCE
+   ✨ FINAL SCENE AMBIENCE
 ========================================================= */
 
 setInterval(
@@ -1058,7 +1508,20 @@ setInterval(
                 Math.random() *
                 window.innerHeight,
 
-                3
+                3,
+
+                {
+
+                    spread:
+                        80,
+
+                    durationMin:
+                        900,
+
+                    durationMax:
+                        1500
+
+                }
 
             );
 
@@ -1070,16 +1533,15 @@ setInterval(
 );
 
 
+
 /* =========================================================
    ⌨️ KEYBOARD NAVIGATION
 ========================================================= */
 
 document.addEventListener(
     "keydown",
-    (event) => {
+    event => {
 
-
-        /* Right arrow */
 
         if (
             event.key === "ArrowRight"
@@ -1098,8 +1560,6 @@ document.addEventListener(
 
         }
 
-
-        /* Left arrow */
 
         if (
             event.key === "ArrowLeft"
@@ -1121,41 +1581,76 @@ document.addEventListener(
 );
 
 
+
 /* =========================================================
-   🖱️ OPTIONAL: CLICK BACKGROUND FOR TINY SPARKLE
+   🖱️ BACKGROUND SPARKLE
 ========================================================= */
 
 document.addEventListener(
     "click",
-    (event) => {
-
-        /*
-         * Don't create extra particles when
-         * clicking buttons or interactive elements.
-         */
+    event => {
 
         if (
             event.target.closest(
                 "button, .little-gift, .magic-star, .luxury-envelope"
             )
         ) {
+
             return;
+
         }
 
-
-        /* Very subtle */
 
         if (
             Math.random() > .65
         ) {
 
             createParticleBurst(
+
                 event.clientX,
+
                 event.clientY,
-                5
+
+                5,
+
+                {
+
+                    spread:
+                        60,
+
+                    durationMin:
+                        500,
+
+                    durationMax:
+                        900
+
+                }
+
             );
 
         }
 
     }
+);
+
+
+
+/* =========================================================
+   READY
+========================================================= */
+
+console.log(
+    "🌙 A Little Universe — cinematic birthday experience ready."
+);
+
+console.log(
+    "🎁 Gift interaction loaded."
+);
+
+console.log(
+    "💌 Envelope interaction loaded."
+);
+
+console.log(
+    "🎆 Fireworks loaded."
 );
