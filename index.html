@@ -1,39 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#05050b"
+    >
 
     <title>A Little Universe ✦</title>
 
+
+    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&display=swap"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- BACKGROUND -->
+
+    <!-- =====================================================
+         CINEMATIC BACKGROUND
+    ====================================================== -->
+
     <div class="background"></div>
+
     <div class="background-overlay"></div>
 
     <div class="stars stars-one"></div>
+
     <div class="stars stars-two"></div>
 
     <div id="particles"></div>
 
+
+    <!-- Ambient light -->
+
     <div class="ambient-glow glow-one"></div>
+
     <div class="ambient-glow glow-two"></div>
+
     <div class="ambient-glow glow-three"></div>
 
 
-    <!-- MOON -->
+    <!-- =====================================================
+         MOON
+    ====================================================== -->
+
     <div class="moon-container">
 
         <div class="moon-aura"></div>
@@ -46,14 +85,20 @@
 
     </div>
 
+
     <div class="shooting-star"></div>
+
 
 
     <!-- =====================================================
          SCENE 1
+         INTRO
     ====================================================== -->
 
-    <section class="scene scene-intro active" id="scene1">
+    <section
+        class="scene scene-intro active"
+        id="scene1"
+    >
 
         <div class="scene-content">
 
@@ -61,19 +106,30 @@
                 somewhere beneath the stars
             </div>
 
+
             <h1>
                 A little<br>
                 <span>universe.</span>
             </h1>
 
+
             <p class="intro-description">
+
                 Tonight isn't just another night.
                 There's a tiny story waiting for you.
+
             </p>
 
-            <button class="primary-button" id="beginButton">
+
+            <button
+                class="primary-button"
+                id="beginButton"
+            >
+
                 Begin the story
+
                 <b>→</b>
+
             </button>
 
         </div>
@@ -81,11 +137,16 @@
     </section>
 
 
+
     <!-- =====================================================
          SCENE 2
+         JOURNEY
     ====================================================== -->
 
-    <section class="scene scene-journey" id="scene2">
+    <section
+        class="scene scene-journey"
+        id="scene2"
+    >
 
         <div class="scene-content">
 
@@ -93,21 +154,32 @@
                 chapter one
             </div>
 
+
             <h2>
                 Some nights<br>
                 <span>feel different.</span>
             </h2>
 
+
             <p>
+
                 Maybe it's the stars.
                 Maybe it's the moon.
                 Or maybe some nights are simply
                 meant to remind us of someone special.
+
             </p>
 
-            <button class="primary-button" id="journeyButton">
+
+            <button
+                class="primary-button"
+                id="journeyButton"
+            >
+
                 Keep going
+
                 <b>→</b>
+
             </button>
 
         </div>
@@ -115,12 +187,16 @@
     </section>
 
 
+
     <!-- =====================================================
          SCENE 3
          MAGIC STAR
     ====================================================== -->
 
-    <section class="scene scene-star" id="scene3">
+    <section
+        class="scene scene-star"
+        id="scene3"
+    >
 
         <div class="scene-content">
 
@@ -128,19 +204,31 @@
                 chapter two
             </div>
 
+
             <h2>
                 There's a little<br>
                 <span>light.</span>
             </h2>
 
+
             <p>
+
                 Maybe it has been waiting for you.
                 Touch it and see where it takes you.
+
             </p>
 
-            <div class="magic-star" id="magicStar">
+
+            <div
+                class="magic-star"
+                id="magicStar"
+                role="button"
+                tabindex="0"
+                aria-label="Touch the magical star"
+            >
                 ✦
             </div>
+
 
             <div class="star-hint">
                 touch the light
@@ -151,90 +239,110 @@
     </section>
 
 
+
     <!-- =====================================================
          SCENE 4
          GIFT
     ====================================================== -->
 
-  <!-- =====================================================
-     SCENE 4 — LITTLE GIFT
-===================================================== -->
+    <section
+        class="scene scene-gift"
+        id="scene4"
+    >
 
-<section class="scene scene-gift" id="scene4">
+        <div class="scene-content">
 
-    <div class="scene-content">
-
-        <div class="eyebrow">
-            chapter three
-        </div>
-
-        <h2>
-            A little<br>
-            <span>something.</span>
-        </h2>
-
-        <p class="gift-description">
-            I left one little surprise beneath the stars.
-        </p>
+            <div class="eyebrow">
+                chapter three
+            </div>
 
 
-        <!-- CSS GIFT -->
-
-        <div class="little-gift" id="littleGift">
-
-            <!-- Glow -->
-
-            <div class="gift-halo"></div>
+            <h2>
+                A little<br>
+                <span>something.</span>
+            </h2>
 
 
-            <!-- Floating sparkles -->
+            <p class="gift-description">
 
-            <span class="gift-sparkle gs1">✦</span>
-            <span class="gift-sparkle gs2">✧</span>
-            <span class="gift-sparkle gs3">✦</span>
-            <span class="gift-sparkle gs4">·</span>
+                I left one little surprise beneath the stars.
 
-
-            <!-- Gift -->
-
-            <div class="gift">
-
-                <!-- Lid -->
-
-                <div class="gift-lid">
-
-                    <div class="gift-lid-ribbon"></div>
-
-                </div>
+            </p>
 
 
-                <!-- Box -->
+            <!-- =================================================
+                 CINEMATIC GIFT
+            ================================================== -->
 
-                <div class="gift-box">
+            <div
+                class="little-gift"
+                id="littleGift"
+                role="button"
+                tabindex="0"
+                aria-label="Open the little birthday gift"
+            >
 
-                    <div class="gift-ribbon"></div>
-
-                </div>
+                <div class="gift-halo"></div>
 
 
-                <!-- Light -->
-
-                <div class="gift-light">
+                <span class="gift-sparkle gs1">
                     ✦
+                </span>
+
+                <span class="gift-sparkle gs2">
+                    ✧
+                </span>
+
+                <span class="gift-sparkle gs3">
+                    ✦
+                </span>
+
+                <span class="gift-sparkle gs4">
+                    ·
+                </span>
+
+
+                <div class="gift">
+
+
+                    <!-- Lid -->
+
+                    <div class="gift-lid">
+
+                        <div class="gift-lid-ribbon"></div>
+
+                    </div>
+
+
+                    <!-- Box -->
+
+                    <div class="gift-box">
+
+                        <div class="gift-ribbon"></div>
+
+                    </div>
+
+
+                    <!-- Magical light -->
+
+                    <div class="gift-light">
+                        ✦
+                    </div>
+
+
                 </div>
 
             </div>
 
+
+            <div class="gift-tap">
+                tap the little gift
+            </div>
+
         </div>
 
+    </section>
 
-        <div class="gift-tap">
-            tap the little gift
-        </div>
-
-    </div>
-
-</section>
 
 
     <!-- =====================================================
@@ -242,7 +350,10 @@
          ENVELOPE
     ====================================================== -->
 
-    <section class="scene scene-letter-intro" id="scene5">
+    <section
+        class="scene scene-letter-intro"
+        id="scene5"
+    >
 
         <div class="scene-content">
 
@@ -258,11 +369,13 @@
 
                 <div class="envelope-glow"></div>
 
+
                 <div class="envelope-body">
 
                     <div class="envelope-inner"></div>
 
                     <div class="envelope-flap"></div>
+
 
                     <div class="envelope-front">
 
@@ -274,6 +387,7 @@
 
                     </div>
 
+
                     <div class="wax-seal">
                         ✦
                     </div>
@@ -284,21 +398,31 @@
 
 
             <h2 class="letter-intro-title">
+
                 Something<br>
+
                 <span>for you.</span>
+
             </h2>
 
+
             <p class="letter-intro-text">
+
                 Some words are better written
                 than spoken.
+
             </p>
+
 
             <button
                 class="primary-button"
                 id="letterButton"
             >
+
                 Open the letter
+
                 <b>→</b>
+
             </button>
 
         </div>
@@ -306,18 +430,23 @@
     </section>
 
 
+
     <!-- =====================================================
          SCENE 6
          LETTER
     ====================================================== -->
 
-    <section class="scene scene-letter" id="scene6">
+    <section
+        class="scene scene-letter"
+        id="scene6"
+    >
 
         <div class="letter-wrapper">
 
             <div class="letter-paper">
 
                 <div class="paper-border"></div>
+
 
                 <div class="paper-corner top-left">
                     ❧
@@ -357,52 +486,71 @@
                 <div class="letter-content">
 
                     <p class="handwritten">
-                        Hey birthday girl,
+                        Happy birthday Prarthana,
                     </p>
 
+
                     <p>
+
                         There are some people who make
                         ordinary days feel a little more
                         special simply by being there.
+
                     </p>
 
+
                     <p>
+
                         And today felt like the perfect
                         excuse to remind you just how
                         wonderful you are.
+
                     </p>
 
+
                     <p>
+
                         I hope this new chapter brings
                         you countless reasons to smile,
                         beautiful memories you never
                         want to forget, and moments that
                         make you stop and think,
+
                         <em>
                             "I'm really happy I got to
                             experience this."
                         </em>
+
                     </p>
 
+
                     <p>
+
                         May you always have the courage
                         to chase the things that make
                         your heart happy.
+
                     </p>
 
+
                     <p>
+
                         And when life gets a little
                         complicated, I hope you remember
                         that there are still beautiful
                         things waiting for you beyond
                         the horizon.
+
                     </p>
 
+
                     <p>
+
                         So here's to another year of
                         adventures, laughter, unexpected
                         memories and dreams slowly
                         becoming real.
+
                     </p>
 
 
@@ -439,8 +587,11 @@
                     class="primary-button letter-continue"
                     id="finalButton"
                 >
+
                     Turn the page
+
                     <b>→</b>
+
                 </button>
 
             </div>
@@ -450,12 +601,16 @@
     </section>
 
 
+
     <!-- =====================================================
          SCENE 7
          FINAL
     ====================================================== -->
 
-    <section class="scene scene-final" id="scene7">
+    <section
+        class="scene scene-final"
+        id="scene7"
+    >
 
         <div class="final-content">
 
@@ -463,31 +618,43 @@
                 ✦　✧　✦
             </div>
 
+
             <div class="eyebrow">
                 the beginning of another chapter
             </div>
+
 
             <h1>
                 Happy<br>
                 <span>Birthday.</span>
             </h1>
 
+
             <div class="final-divider"></div>
 
+
             <p class="final-message">
+
                 May your next chapter be even more
                 beautiful than the last.
+
             </p>
 
+
             <div class="final-small">
+
                 ✦ made of memories, dreams & little moments ✦
+
             </div>
+
 
             <button
                 class="restart-button"
                 id="restartButton"
             >
+
                 ↻ experience it again
+
             </button>
 
         </div>
@@ -495,12 +662,17 @@
     </section>
 
 
-    <!-- FIREWORKS -->
+
+    <!-- =====================================================
+         FIREWORKS
+    ====================================================== -->
 
     <canvas id="fireworks"></canvas>
+
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
