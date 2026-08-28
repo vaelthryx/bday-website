@@ -224,10 +224,10 @@ function createParticleBurst(
 
         const color =
             colors[
-                Math.floor(
-                    Math.random() *
-                    colors.length
-                )
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
             ];
 
 
@@ -424,6 +424,14 @@ function getElementCenter(element) {
 const beginButton =
     document.getElementById("beginButton");
 
+const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+
+if (backgroundMusic) {
+    backgroundMusic.volume = 0.35;
+}
+
 
 if (beginButton) {
 
@@ -431,14 +439,25 @@ if (beginButton) {
         "click",
         () => {
 
+            /* Start the music after the user's click */
+            if (backgroundMusic) {
+
+                backgroundMusic
+                    .play()
+                    .catch(error => {
+                        console.warn(
+                            "Music could not start:",
+                            error
+                        );
+                    });
+
+            }
+
+
             createParticleBurst(
-
                 window.innerWidth / 2,
-
                 window.innerHeight / 2,
-
                 35
-
             );
 
 
